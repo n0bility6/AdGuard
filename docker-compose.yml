@@ -19,7 +19,12 @@ services:
     networks:
      - dmz
     restart: unless-stopped
-         
+    labels:
+     - traefik.enable=true
+     - traefik.http.routers.adguard.rule=Host("adguard.escasapool.com")
+     - traefik.http.routers.adguard.entrypoints=http
+     - traefik.http.services.adguard-http.loadbalancer.server.port=3000
+     
 networks:
   dmz:
     external: true
