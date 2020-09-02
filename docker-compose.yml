@@ -22,9 +22,11 @@ services:
     labels:
      - traefik.enable=true
      - traefik.docker.network=dmz
-     - traefik.http.routers.adguard.rule=Host("adguard.escasapool.com")
-     - traefik.http.routers.adguard.entrypoints=http
      - traefik.http.services.adguard.loadbalancer.server.port=3000
+     - traefik.http.routers.adguard-http.entrypoints=http     
+     - traefik.http.routers.adguard-http.rule=Host("adguard.escasapool.com")
+
+     
 networks:
   dmz:
     external: true
